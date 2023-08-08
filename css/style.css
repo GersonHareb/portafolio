@@ -8,30 +8,23 @@
 
   nav {
     text-align: center; /* Centra los elementos de la barra de navegación */
-    
   }
-  
   ul {
     list-style: none; /* Quita las viñetas de la lista */
 
     margin: 0;
   }
-  
   li {
     display: inline-block; /* Muestra los elementos de la lista en línea */
     padding: 20px;
   }
-  
   a {
     text-decoration: none; /* Quita las decoraciones de enlaces (subrayado por defecto) */
     color: #fcfcfc; /* Cambia el color de los enlaces */
   }
-  
   /* Cambiar el color al pasar el mouse por encima 
   li:hover {
-    
   }*/
-  
 
   section{
     height: 100vh;
@@ -48,8 +41,8 @@
     color: var(--main-color);
   }
 
-  @keyframes brillo { 
-    40% { 
+  @keyframes brillo {
+    40% {
       color: hsl(230, 100%, 87%);
       text-shadow:
         0 0 1em  hsla(209, 73%, 28%, 0.2),
@@ -66,8 +59,8 @@
         -0.5em 0.125em 0.25em hsla(167, 100%, 60%, 0.4);
     }
   }
-  
-  
+
+
   h1, h2 {
     margin: auto;
     font-size: 3.5rem;
@@ -90,7 +83,7 @@
     pointer-events: none;
     z-index: 1;
   }
-  
+
   .star {
     position: absolute;
     width: 2px;
@@ -99,7 +92,7 @@
     opacity: 0.5;
     animation: twinkling 2s infinite;
   }
-  
+
   @keyframes twinkling {
     0%, 100% {
       opacity: 0.5;
@@ -108,8 +101,8 @@
       opacity: 1;
     }
   }
-  
-  
+
+
 
   /*Fin seccion inicio*/
 
