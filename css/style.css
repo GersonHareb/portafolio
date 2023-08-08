@@ -27,10 +27,10 @@
     color: #fcfcfc; /* Cambia el color de los enlaces */
   }
   
-  /* Cambiar el color al pasar el mouse por encima */
+  /* Cambiar el color al pasar el mouse por encima 
   li:hover {
-    background-color: #3498db;
-  }
+    
+  }*/
   
 
   section{
@@ -39,6 +39,7 @@
 
   /*Seccion Inicio*/
   section#welcome{
+    position: relative;
     background: linear-gradient(135deg, hsl(231, 48%, 13%), hsl(229, 17%, 19%));
     display: flex;
     flex-direction: column;
@@ -76,8 +77,39 @@
 
   li a{
     text-shadow: 0.3em 0.125em 0.25em hsla(172, 100%, 60%, 0.4);
-
   }
+
+  /* Estrellas titilantes */
+/* Estilos para las estrellas */
+.stars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: white;
+    opacity: 0.5;
+    animation: twinkling 2s infinite;
+  }
+  
+  @keyframes twinkling {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  
 
   /*Fin seccion inicio*/
 
