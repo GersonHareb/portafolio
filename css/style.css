@@ -1,44 +1,104 @@
-body, html {
-    height: 100%;
+:root {
+    --primary-color: #222522;
+    --secondary-color: #FAFF00;
+    --light1-color: #02A9EA;
+    --light2-color: #FF01FB;
+    --main-color: #FFFEFF;
+  }
+
+  nav {
+    text-align: center; /* Centra los elementos de la barra de navegación */
+    
+  }
+  
+  ul {
+    list-style: none; /* Quita las viñetas de la lista */
+
     margin: 0;
+  }
+  
+  li {
+    display: inline-block; /* Muestra los elementos de la lista en línea */
+    padding: 20px;
+  }
+  
+  a {
+    text-decoration: none; /* Quita las decoraciones de enlaces (subrayado por defecto) */
+    color: #fcfcfc; /* Cambia el color de los enlaces */
+  }
+  
+  /* Cambiar el color al pasar el mouse por encima */
+  li:hover {
+    background-color: #3498db;
+  }
+  
+
+  section{
+    height: 100vh;
+  }
+
+  /*Seccion Inicio*/
+  section#welcome{
+    background: linear-gradient(135deg, hsl(231, 48%, 13%), hsl(229, 17%, 19%));
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    perspective: 1000px; /* Define la perspectiva 3D */
+    justify-content: center;
+    color: var(--main-color);
+  }
+
+  @keyframes brillo { 
+    40% { 
+      color: hsl(230, 100%, 87%);
+      text-shadow:
+        0 0 1em  hsla(209, 73%, 28%, 0.2),
+        0 0 0.125em hsla(189, 100%, 60%, 0.5),
+        -0.5em -0.125em 0.25em hsla(162, 100%, 60%, 0.2),
+        0.5em 0.125em 0.25em hsla(172, 100%, 60%, 0.4);
+    }
+    90% {
+      color: hsl(230, 80%, 90%);
+      text-shadow:
+        0 0 1em hsla(120, 100%, 50%, 0.5),
+        0 0 0.125em hsla(184, 100%, 60%, 0.5),
+        0.5em -0.125em 0.25em hsla(261, 100%, 60%, 0.2),
+        -0.5em 0.125em 0.25em hsla(167, 100%, 60%, 0.4);
+    }
   }
   
-  .container {
-    width: 200px;
-    height: 200px;
-  }
   
-  .cube {
+  h1, h2 {
+    margin: auto;
+    font-size: 3.5rem;
+    font-weight: 300;
+    animation: brillo 5s 750ms infinite;
+  }
+
+  li a{
+    text-shadow: 0.3em 0.125em 0.25em hsla(172, 100%, 60%, 0.4);
+
+  }
+
+  /*Fin seccion inicio*/
+
+  section#proyectos{
+    background-color: var(--main-color);
+  }
+
+  section#sobre-mi{
+    background-color: var(--light1-color);
+  }
+
+  section#contacto{
+    background-color: var(--secondary-color);
+  }
+
+  .contenedor-principal::before {
+    content: "";
+    position: fixed;
     width: 100%;
     height: 100%;
-    transform-style: preserve-3d; /* Asegura que los elementos internos conserven la transformación 3D */
-    transform: rotateX(45deg) rotateY(45deg); /* Rota el cubo en el eje X e Y para mostrarlo en perspectiva */
-    animation: spin 10s linear infinite; /* Agrega una animación para hacer girar el cubo */
-  }
-  
-  .face {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2em;
-    color: white;
-  }
-  
-  .front { background-color: #FF5733; transform: translateZ(100px); }
-  .back { background-color: #33FFA8; transform: translateZ(-100px) rotateY(180deg); }
-  .left { background-color: #3369FF; transform: translateX(-100px) rotateY(-90deg); }
-  .right { background-color: #33FF33; transform: translateX(100px) rotateY(90deg); }
-  .top { background-color: #FF33FF; transform: translateY(-100px) rotateX(90deg); }
-  .bottom { background-color: #FFC300; transform: translateY(100px) rotateX(-90deg); }
-  
-  @keyframes spin {
-    from { transform: rotateX(45deg) rotateY(45deg); }
-    to { transform: rotateX(45deg) rotateY(405deg); }
+    background: radial-gradient(rgba(255, 255, 255, 0.3), transparent 70%);
+    opacity: 0.4;
+    pointer-events: none;
   }
