@@ -8,6 +8,11 @@
 
   nav {
     text-align: center; /* Centra los elementos de la barra de navegación */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    position: relative;
+    width: 100%;
+    z-index: 1000;
+    transition: top 0.3s ease-in-out;
   }
   ul {
     list-style: none; /* Quita las viñetas de la lista */
@@ -26,6 +31,32 @@
   li:hover {
   }*/
 
+
+.proyecto-nav {
+  background-color: var(--light1-color);
+  transition: background-color 0.3s ease-in-out;
+}
+
+
+.sobre-mi-nav {
+  background-color: var(--light2-color);
+  transition: background-color 0.3s ease-in-out; 
+}
+
+
+.contacto-nav {
+  background-color: var(--primary-color);
+  transition: background-color 0.3s ease-in-out;
+}
+
+ 
+  /* Estilo de la barra de navegación fija */
+  .custom-navbar.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
   section{
     height: 100vh;
   }
@@ -33,40 +64,38 @@
   /*Seccion Inicio*/
   section#welcome{
     position: relative;
-    background: linear-gradient(135deg, hsl(231, 48%, 13%), hsl(229, 17%, 19%));
+    background: linear-gradient(180deg, hsl(261, 78%, 16%), hsl(283, 8%, 35%));
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: var(--main-color);
+    text-align: center;
   }
 
-  @keyframes brillo {
-    40% {
-      color: hsl(230, 100%, 87%);
-      text-shadow:
-        0 0 1em  hsla(209, 73%, 28%, 0.2),
-        0 0 0.125em hsla(189, 100%, 60%, 0.5),
-        -0.5em -0.125em 0.25em hsla(162, 100%, 60%, 0.2),
-        0.5em 0.125em 0.25em hsla(172, 100%, 60%, 0.4);
+  @keyframes subtleColorChange {
+    0% {
+      color: hsl(0, 0%, 100%);
+      text-shadow: 
+      0 0 0.01rem hsla(32, 71%, 73%, 0.644);
     }
     90% {
-      color: hsl(230, 80%, 90%);
+      color: hsl(58, 50%, 87%);
       text-shadow:
-        0 0 1em hsla(120, 100%, 50%, 0.5),
-        0 0 0.125em hsla(184, 100%, 60%, 0.5),
-        0.5em -0.125em 0.25em hsla(261, 100%, 60%, 0.2),
-        -0.5em 0.125em 0.25em hsla(167, 100%, 60%, 0.4);
+        0 0 0.9rem hsla(184, 71%, 73%, 0.644),
+        1rem 2rem 3rem hsla(54, 17%, 51%, 0.644);
     }
   }
-
-
+  
   h1, h2 {
     margin: auto;
     font-size: 3.5rem;
     font-weight: 300;
-    animation: brillo 5s 750ms infinite;
+    animation: subtleColorChange 4s infinite alternate;
   }
+  
+  
+  
 
   li a{
     text-shadow: 0.3em 0.125em 0.25em hsla(172, 100%, 60%, 0.4);
@@ -82,6 +111,7 @@
     height: 100%;
     pointer-events: none;
     z-index: 1;
+    overflow: hidden;
   }
 
   .star {
