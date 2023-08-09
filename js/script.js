@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.classList.remove('proyecto-nav');
         }
 
-        // Verificar si el scroll está sobre la sección "proyectos"
+        // Verificar si el scroll está sobre la sección "sobre-mi"
         const sectionSobreMi= document.getElementById('sobre-mi');
         const sectionSobreMiTop = sectionSobreMi.offsetTop;
         const sectionSobreMiBottom = sectionSobreMiTop + sectionSobreMi.clientHeight;
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.classList.remove('sobre-mi-nav');
         }
 
-        // Verificar si el scroll está sobre la sección "proyectos"
+        // Verificar si el scroll está sobre la sección "contacto"
         const sectionContacto = document.getElementById('contacto');
         const sectionContactoTop = sectionContacto.offsetTop;
         const sectionContactoBottom = sectionContactoTop + sectionContacto.clientHeight;
