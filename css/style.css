@@ -89,6 +89,8 @@ h2 {
   margin: auto;
   font-size: 3.5rem;
   font-weight: 300;
+  position: relative;
+  z-index: 10;
   animation: subtleColorChange 4s infinite alternate;
 }
 
@@ -128,6 +130,36 @@ li a {
   }
 }
 
+/*Luna*/
+.moon {
+  position: absolute;
+  top: 34%;
+  left: 69%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(ellipse at center, #f0f0f0 20%, #8b8888 90%);
+  border-radius: 50%;
+  opacity: 1;
+  z-index: 1;
+  box-shadow: 0 0 0.9rem hsla(32, 71%, 73%, 0.644);
+  animation: titileo 4s infinite ease-in-out;
+}
+
+@keyframes titileo {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 30px 10px rgba(240, 240, 240, 0.5),
+      0 0 10px 8px rgba(240, 240, 240, 0.3);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 0 30px 20px rgba(240, 240, 240, 0.5),
+      0 0 10px 16px rgba(240, 240, 240, 0.3);
+  }
+}
+
 /*Fin seccion inicio*/
 
 /*Seccion proyectos*/
@@ -148,6 +180,7 @@ section#proyectos {
   max-height: 350px;
   border-radius: 12px;
   background-color: var(--light1-color);
+  overflow: hidden;
 }
 
 .carta-proyecto img {
@@ -155,6 +188,12 @@ section#proyectos {
   width: 100%;
   margin-bottom: 10px;
   object-fit: cover;
+  transition: transform 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+.carta-proyecto img:hover {
+  transform: scale(1.3);
 }
 
 .carta-proyecto p {
@@ -183,6 +222,13 @@ section#contacto {
 @media (max-width: 768px) {
   section#welcome h2 {
     margin-bottom: 10px;
+  }
+
+  .moon {
+    position: absolute;
+    top: 19%; /* Ajusta la posición vertical de la luna */
+    left: 50%; /* Centra la luna horizontalmente */
+    transform: translateX(-50%); /* Centra exactamente la luna */
   }
 
   section#proyectos {
