@@ -181,20 +181,25 @@ section#contacto {
 
 /* Consulta de medios para pantallas de tamaño de tableta y celular */
 @media (max-width: 768px) {
+  section#welcome h2 {
+    margin-bottom: 10px;
+  }
+
   section#proyectos {
     grid-template-columns: 1fr; /* Una sola columna */
+    padding-bottom: 100px;
   }
 
   h1,
   h2 {
-    font-size: 1.7rem;
+    font-size: 2rem;
     font-weight: 300;
   }
 
   .navbar-menu {
     padding-left: 0;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 14px;
+    padding-bottom: 14px;
   }
 
   nav li {
@@ -202,7 +207,7 @@ section#contacto {
   }
 
   nav li a {
-    font-size: 12px;
+    font-size: 15px;
     padding: 5px;
   }
 }
