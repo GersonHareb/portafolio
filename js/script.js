@@ -19,7 +19,7 @@ function addStars(container, count) {
 
 // Añadir estrellas al contenedor de estrellas
 const starsContainer = document.querySelector(".stars-container");
-addStars(starsContainer, 50); // ajustar la cantidad de estrellas
+addStars(starsContainer, 200); // ajustar la cantidad de estrellas
 
 // Añadir clase de animación a las estrellas
 const stars = document.querySelectorAll(".star");

@@ -283,4 +283,19 @@ section#contacto {
     font-size: 15px;
     padding: 5px;
   }
+
+  .active-proyecto{
+    padding: 17px 6px 17px 6px;
+    margin: 0 5px 0 5px;
+  }
+  
+  .active-sobre-mi{
+    padding: 17px 6px 17px 6px;
+    margin: 0 5px 0 5px;
+  }
+  
+  .active-contacto{
+    padding: 17px 6px 17px 6px;
+    margin: 0 5px 0 5px;
+  }
 }
