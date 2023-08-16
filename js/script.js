@@ -30,6 +30,8 @@ stars.forEach((star, index) => {
 /*Animacion navbar*/
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.getElementById('custom-navbar');
+    const navLinks = navbar.querySelectorAll('.navbar-menu a');
+
 
     function updateNavbarPosition() {
         if (window.scrollY >= navbar.offsetTop) {
@@ -55,8 +57,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (window.scrollY >= sectionProyectosTop && window.scrollY < sectionProyectosBottom) {
             navbar.classList.add('proyecto-nav');
+             navLinks.forEach(navLink => {
+                if (navLink.getAttribute('href') === '#proyectos') {
+                    navLink.classList.add('active-proyecto');
+                } else {
+                    navLink.classList.remove('active-proyecto');
+                }
+            });
         } else {
             navbar.classList.remove('proyecto-nav');
+            navLinks.forEach(navLink => {
+                navLink.classList.remove('active-proyecto');
+            });
         }
 
         // Verificar si el scroll está sobre la sección "sobre-mi"
@@ -66,8 +78,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (window.scrollY >= sectionSobreMiTop && window.scrollY < sectionSobreMiBottom) {
             navbar.classList.add('sobre-mi-nav');
+            navLinks.forEach(navLink => {
+                if (navLink.getAttribute('href') === '#sobre-mi') {
+                    navLink.classList.add('active-sobre-mi');
+                } else {
+                    navLink.classList.remove('active-sobre-mi');
+                }
+            });
         } else {
             navbar.classList.remove('sobre-mi-nav');
+            navLinks.forEach(navLink => {
+                navLink.classList.remove('active-sobre-mi');
+            });
         }
 
         // Verificar si el scroll está sobre la sección "contacto"
@@ -77,8 +99,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (window.scrollY >= sectionContactoTop && window.scrollY < sectionContactoBottom) {
             navbar.classList.add('contacto-nav');
+            navLinks.forEach(navLink => {
+                if (navLink.getAttribute('href') === '#contacto') {
+                    navLink.classList.add('active-contacto');
+                } else {
+                    navLink.classList.remove('active-contacto');
+                }
+            });
         } else {
             navbar.classList.remove('contacto-nav');
+            navLinks.forEach(navLink => {
+                navLink.classList.remove('active-contacto');
+            });
         }
     } 
 
