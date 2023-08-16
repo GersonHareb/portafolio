@@ -33,6 +33,10 @@
   li:hover {
   }*/
 
+  .navbar-menu{
+    padding-left: 0;
+  }
+
 
 .proyecto-nav {
   background-color: var(--light1-color);
@@ -201,7 +205,6 @@
   }
 
   .navbar-menu{
-    padding-left:0;
     padding-top: 10px;
     padding-bottom: 10px;
   }
