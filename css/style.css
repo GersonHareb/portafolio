@@ -31,14 +31,6 @@ a {
   li:hover {
   }*/
 
-<<<<<<< HEAD
-  .navbar-menu{
-    padding-left: 0;
-  }
-
-
-=======
->>>>>>> 0be03a020e297861b6bdb0c681e228bf95b8cb02
 .proyecto-nav {
   background-color: var(--light1-color);
   transition: background-color 0.3s ease-in-out;
@@ -250,16 +242,10 @@ section#contacto {
     font-weight: 300;
   }
 
-<<<<<<< HEAD
-  .navbar-menu{
-    padding-top: 10px;
-    padding-bottom: 10px;
-=======
   .navbar-menu {
     padding-left: 0;
     padding-top: 14px;
     padding-bottom: 14px;
->>>>>>> 0be03a020e297861b6bdb0c681e228bf95b8cb02
   }
 
   nav li {
