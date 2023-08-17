@@ -6,6 +6,12 @@
   --main-color: #f5f5f5;
 }
 
+body{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 nav {
   text-align: center;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
@@ -85,6 +91,18 @@ a {
 
 section {
   min-height: 100vh;
+  padding-top: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+}
+
+.section-container{
+  max-width: 1200px;
+  margin: auto;
+  display: grid; /* Usar una disposición de cuadrícula */
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas de tamaño flexible */
+  gap: 20px; /* Espacio entre las tarjetas */
 }
 
 /*Seccion Inicio*/
@@ -193,34 +211,58 @@ li a {
 section#proyectos {
   background-color: var(--main-color);
   color: var(--main-color);
-  padding-top: 100px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 30px;
-  display: grid; /* Usar una disposición de cuadrícula */
-  grid-template-columns: repeat(2, 1fr); /* 2 columnas de tamaño flexible */
-  gap: 20px; /* Espacio entre las tarjetas */
+
 }
 
 .carta-proyecto {
+  position: relative;
+  display: flex;
+  flex-direction: row;
   max-width: 100%;
-  max-height: 350px;
+  height: auto;
   border-radius: 12px;
-  background-color: var(--light1-color);
   overflow: hidden;
+  box-shadow: 0 9px 10px -3px rgba(27, 27, 27, 0.5);
+  z-index: 0;
 }
 
 .carta-proyecto img {
-  max-height: 150px;
-  width: 100%;
-  margin-bottom: 10px;
+  max-height: 100%;
+  width: 60%;
   object-fit: cover;
   transition: transform 0.2s ease-in-out;
-  overflow: hidden;
+  z-index: 1;
 }
 
-.carta-proyecto img:hover {
-  transform: scale(1.3);
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.6));
+  z-index: 2; /* Colocar el overlay encima de la imagen */
+}
+
+@keyframes shine {
+  0% {
+    box-shadow: 10px 10px 10px -1px rgba(253, 118, 192, 0.5);
+  }
+  50% {
+    box-shadow: 15px 15px 20px 0px rgba(253, 118, 192, 0.8);
+  }
+  100% {
+    box-shadow: 10px 10px 10px -1px rgba(253, 118, 192, 0.5);
+  }
+}
+
+.carta-proyecto:hover {
+  animation: shine 1.5s infinite;
+}
+
+.carta-proyecto h5{
+  text-align: center;
+  margin-bottom:20px ;
 }
 
 .carta-proyecto p {
@@ -231,9 +273,71 @@ section#proyectos {
   background-color: var(--light2-color);
 }
 
-.texto-tarjeta {
-  padding: 20px;
+@keyframes changeColors {
+  0% {
+    background-color: var(--light1-color);
+    color: initial;
+  }
+  100% {
+    background-color: var(--light2-color);
+    color: var(--main-color);
+  }
 }
+
+.texto-tarjeta {
+  flex-grow: 1;
+  width: 40%;
+  padding: 20px;
+  overflow: hidden;
+  z-index: 1;
+  background-color: var(--light1-color);
+  transition: background-color 0.5s ease-in-out;
+  position: relative;
+  z-index: 3;
+}
+
+.carta-proyecto:hover img {
+  transform: scale(1.1); 
+}
+
+.carta-proyecto:hover .texto-tarjeta {
+  animation: changeColors 0.2s ease-in-out forwards;
+}
+
+.carta-proyecto:hover .texto-tarjeta button {
+  background-color: var(--light1-color);
+  color: var(--main-color);
+}
+.tags{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin:0 0 15px 7px ;
+  z-index: 5;
+}
+
+.tags span{
+  padding: 4px 8px 6px 8px;
+  margin-left: 8px;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.springboot{
+  background-color: #07a14c;
+}
+
+.java{
+  background-color: #e05819;
+}
+
+.mysql{
+  background-color: #e4e70e;
+  color: #222522!important;
+}
+
+
 
 /*Fin seccion proyectos*/
 
@@ -259,7 +363,6 @@ section#contacto {
   }
 
   section#proyectos {
-    grid-template-columns: 1fr; /* Una sola columna */
     padding-bottom: 100px;
   }
 
@@ -297,5 +400,17 @@ section#contacto {
   .active-contacto{
     padding: 17px 6px 17px 6px;
     margin: 0 5px 0 5px;
+  }
+
+  .section-container{
+    grid-template-columns: 1fr;
+  }
+
+  .carta-proyecto {
+    flex-direction: column;
+  }
+
+  .carta-proyecto img, .texto-tarjeta{
+    width: 100%;
   }
 }
