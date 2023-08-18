@@ -117,6 +117,32 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateNavbarPosition);
 });
 
+/*Animacion video */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cartasProyecto = document.querySelectorAll('.carta-proyecto');
+  
+    cartasProyecto.forEach(cartaProyecto => {
+      const video = cartaProyecto.querySelector('video');
+  
+      cartaProyecto.addEventListener('mouseenter', () => {
+        video.play();
+      });
+  
+      cartaProyecto.addEventListener('mouseleave', () => {
+        video.pause();
+        video.currentTime = 0;
+      });
+    });
+  });
+
+  
+  /*Animacion parallax */
+  const montanaFondo = document.querySelector('.montana-fondo');
+window.addEventListener('scroll', () => {
+  const scrollPercentage = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+  montanaFondo.style.setProperty('--scroll-percentage', scrollPercentage);
+});
   
   
   
