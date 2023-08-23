@@ -1,122 +1,3 @@
-// Función para crear una estrella
-function createStar() {
-    const star = document.createElement("div");
-    star.className = "star";
-    return star;
-}
-
-// Función para añadir estrellas al contenedor
-function addStars(container, count) {
-    for (let i = 0; i < count; i++) {
-        const star = createStar();
-        const x = Math.random() * window.innerWidth; // Posición horizontal aleatoria
-        const y = Math.random() * window.innerHeight; // Posición vertical aleatoria
-        star.style.left = `${x}px`;
-        star.style.top = `${y}px`;
-        container.appendChild(star);
-    }
-}
-
-// Añadir estrellas al contenedor de estrellas
-const starsContainer = document.querySelector(".stars-container");
-addStars(starsContainer, 200); // ajustar la cantidad de estrellas
-
-// Añadir clase de animación a las estrellas
-const stars = document.querySelectorAll(".star");
-stars.forEach((star, index) => {
-    star.style.animationDelay = `${index * 0.1}s`;
-});
-
-/*Animacion navbar*/
-document.addEventListener('DOMContentLoaded', () => {
-    const navbar = document.getElementById('custom-navbar');
-    const navLinks = navbar.querySelectorAll('.navbar-menu a');
-
-
-    function updateNavbarPosition() {
-        if (window.scrollY >= navbar.offsetTop) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-
-        // Volver a la posición original en la mitad de la pantalla de la sección de inicio
-        const windowHeight = window.innerHeight;
-        const halfWindowHeight = windowHeight / 2;
-        const sectionInicio = document.getElementById('welcome');
-        const sectionInicioTop = sectionInicio.offsetTop;
-
-        if (window.scrollY >= sectionInicioTop && window.scrollY < sectionInicioTop + halfWindowHeight) {
-            navbar.classList.remove('scrolled');
-        }
-
-        // Verificar si el scroll está sobre la sección "proyectos"
-        const sectionProyectos = document.getElementById('proyectos');
-        const sectionProyectosTop = sectionProyectos.offsetTop;
-        const sectionProyectosBottom = sectionProyectosTop + sectionProyectos.clientHeight;
-
-        if (window.scrollY >= sectionProyectosTop && window.scrollY < sectionProyectosBottom) {
-            navbar.classList.add('proyecto-nav');
-             navLinks.forEach(navLink => {
-                if (navLink.getAttribute('href') === '#proyectos') {
-                    navLink.classList.add('active-proyecto');
-                } else {
-                    navLink.classList.remove('active-proyecto');
-                }
-            });
-        } else {
-            navbar.classList.remove('proyecto-nav');
-            navLinks.forEach(navLink => {
-                navLink.classList.remove('active-proyecto');
-            });
-        }
-
-        // Verificar si el scroll está sobre la sección "sobre-mi"
-        const sectionSobreMi= document.getElementById('sobre-mi');
-        const sectionSobreMiTop = sectionSobreMi.offsetTop;
-        const sectionSobreMiBottom = sectionSobreMiTop + sectionSobreMi.clientHeight;
-
-        if (window.scrollY >= sectionSobreMiTop && window.scrollY < sectionSobreMiBottom) {
-            navbar.classList.add('sobre-mi-nav');
-            navLinks.forEach(navLink => {
-                if (navLink.getAttribute('href') === '#sobre-mi') {
-                    navLink.classList.add('active-sobre-mi');
-                } else {
-                    navLink.classList.remove('active-sobre-mi');
-                }
-            });
-        } else {
-            navbar.classList.remove('sobre-mi-nav');
-            navLinks.forEach(navLink => {
-                navLink.classList.remove('active-sobre-mi');
-            });
-        }
-
-        // Verificar si el scroll está sobre la sección "contacto"
-        const sectionContacto = document.getElementById('contacto');
-        const sectionContactoTop = sectionContacto.offsetTop;
-        const sectionContactoBottom = sectionContactoTop + sectionContacto.clientHeight;
-
-        if (window.scrollY >= sectionContactoTop && window.scrollY < sectionContactoBottom) {
-            navbar.classList.add('contacto-nav');
-            navLinks.forEach(navLink => {
-                if (navLink.getAttribute('href') === '#contacto') {
-                    navLink.classList.add('active-contacto');
-                } else {
-                    navLink.classList.remove('active-contacto');
-                }
-            });
-        } else {
-            navbar.classList.remove('contacto-nav');
-            navLinks.forEach(navLink => {
-                navLink.classList.remove('active-contacto');
-            });
-        }
-    } 
-
-    window.addEventListener('scroll', updateNavbarPosition);
-});
-
 /*Animacion video */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -136,14 +17,130 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+
+  /*Animacion espacio */
+  const espacio = document.getElementById('espacio');
+
+  function crearEstrella() {
+    const estrella = document.createElement('div');
+    estrella.classList.add('estrella');
+    
+    estrella.style.left = Math.random() * 100 + 'vw';
+    estrella.style.top = Math.random() * 100 + 'vh';
+
+  if (Math.random() < 0.5) {
+    estrella.classList.add('estrellaBrillante');
+  }
   
-  /*Animacion parallax */
-  const montanaFondo = document.querySelector('.montana-fondo');
-window.addEventListener('scroll', () => {
-  const scrollPercentage = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-  montanaFondo.style.setProperty('--scroll-percentage', scrollPercentage);
-});
+    espacio.appendChild(estrella);
+  
+    let posicion = 100;
+    const animacion = setInterval(() => {
+      posicion -= 1;
+      estrella.style.left = posicion + 'vw';
+  
+      if (posicion < -5) {
+        estrella.remove();
+        clearInterval(animacion);
+      }
+    }, 20);
+  }
+  setInterval(crearEstrella, 100);
+  
+  /* Animacion Gersito*/
+  const nave = document.querySelector('#espacio img');
+  let keys = {};
+  
+  window.addEventListener('keydown', function (e) {
+    keys[e.key] = true;
+    e.preventDefault(); // Detiene el comportamiento predeterminado
+  });
+  
+  window.addEventListener('keyup', function (e) {
+    keys[e.key] = false;
+  });
+  
+  function moveNave() {
+    const step = 1; // Puedes ajustar este valor según la velocidad que desees
+  
+
+    const stepHorizontal = 1.2; 
+    const stepVertical = 1.6; 
+    
+    // Obtiene el tamaño del viewport y de la nave
+    const viewportWidth = document.getElementById('espacio').offsetWidth;
+    const viewportHeight = document.getElementById('espacio').offsetHeight;
+    const naveWidth = nave.offsetWidth;
+    const naveHeight = nave.offsetHeight;
+    
+    let left = parseFloat(nave.style.left || 50);
+    let top = parseFloat(nave.style.top || 30);
+    
+    if (keys['ArrowLeft']) left -= stepHorizontal;
+    if (keys['ArrowRight']) left += stepHorizontal;
+    if (keys['ArrowUp']) top -= stepVertical; 
+    if (keys['ArrowDown']) top += stepVertical;
+    
+    // Limitar la posición para que la nave no se salga del viewport
+    left = Math.max(0, Math.min(left, 100 - naveWidth / viewportWidth * 100));
+    top = Math.max(0, Math.min(top, 100 - naveHeight / viewportHeight * 100));
+    
+    nave.style.left = `${left}%`;
+    nave.style.top = `${top}%`;
+
+    // Si Gersito está avanzando, añadir la clase de propulsor
+    if (keys['ArrowRight']) {
+        nave.classList.add('propulsor');
+    } else {
+        nave.classList.remove('propulsor');
+    }
+    
+    
+  
+    requestAnimationFrame(moveNave);
+  }
+  
+  requestAnimationFrame(moveNave);
+
+  /*Disparar*/
+  var proyectil = document.createElement('div');
+  window.addEventListener('keydown', function(e) {
+    if (e.code === 'Space') {
+      disparar();
+    }
+  });
+
+  function disparar() {
+    var nave = document.querySelector('#espacio img');
+    var rect = nave.getBoundingClientRect();
+    
+    var proyectil = document.createElement('div');
+    proyectil.style.position = 'absolute';
+    proyectil.style.left = rect.right + 'px';
+    proyectil.style.top = (rect.top + rect.bottom) / 2 + 'px';
+    proyectil.style.width = '20px';
+    proyectil.style.height = '5px';
+    proyectil.style.background = 'yellow';
+    proyectil.style.boxShadow = '8px -4px 87px 12px rgba(28,137,161,1)';
+    document.getElementById('espacio').appendChild(proyectil);
+  
+    /*Animacion disparo*/
+    var velocidad = 30;
+    var moverProyectil = setInterval(function() {
+      var left = parseFloat(proyectil.style.left);
+      proyectil.style.left = (left + velocidad) + 'px';
+      
+      // Verifica si el proyectil está fuera de la pantalla
+      if (left > window.innerWidth) {
+        clearInterval(moverProyectil);
+        document.body.removeChild(proyectil);
+      }
+    }, 16);
+  }
   
   
-  
+
+
+
+
   

@@ -1,0 +1,231 @@
+:root {
+    --primary-color: #222522;
+    --secondary-color: #faff00;
+    --light1-color: #02a9ea;
+    --light2-color: #fd1f62;
+    --main-color: #f5f5f5;
+  }
+  
+  body{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  nav {
+    text-align: center;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    z-index: 1000;
+    transition: top 0.3s ease-in-out;
+  }
+  ul {
+    list-style: none;
+  
+    margin: 0;
+  }
+  li {
+    display: inline-block;
+    padding: 20px;
+  }
+  a {
+    text-decoration: none;
+    color: #fcfcfc;
+  }
+  /*
+    li:hover {
+    }*/
+  
+  .proyecto-nav {
+    background-color: var(--light1-color);
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .active-proyecto{
+    background:var(--main-color);
+    color: var(--primary-color);
+    padding: 22px;
+    font-weight: 600;
+    margin: 0 -20px 0 -20px;
+    box-shadow: 0px 10px 15px -5px var(--main-color);
+  }
+  
+  .active-sobre-mi{
+    background:var(--light1-color);
+    color: var(--main-color);
+    padding: 22px;
+    font-weight: 600;
+    margin: 0 -20px 0 -20px;
+    box-shadow: 0px 10px 15px -5px var(--light1-color);
+  }
+  
+  .active-contacto{
+    background:var(--secondary-color);
+    color: var(--primary-color);
+    padding: 22px;
+    font-weight: 600;
+    margin: 0 -20px 0 -20px;
+    box-shadow: 0px 10px 15px -5px var(--secondary-color);
+  }
+  
+  .sobre-mi-nav {
+    background-color: var(--light2-color);
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contacto-nav {
+    background-color: var(--primary-color);
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo de la barra de navegación fija */
+  .custom-navbar.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  section {
+    min-height: 100vh;
+  overflow: hidden;
+  }
+  
+  .section-container{
+    max-width: 1200px;
+    margin: auto;
+    display: grid; /* Usar una disposición de cuadrícula */
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas de tamaño flexible */
+    gap: 20px; /* Espacio entre las tarjetas */
+  }
+  
+  /*Seccion Inicio*/
+  section#welcome {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-color);
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  #espacio {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to left bottom, #060b3d, #1d0d43, #2f0d48, #400c4b, #51094d, #501c5e, #4c2b6e, #45397d, #00518f, #006592, #007488, #058179);  overflow: hidden; /* Para ocultar las estrellas que salen del viewport */
+  }
+  
+  .estrella {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+  }
+  
+  @keyframes rastroBrillo {
+    0% {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scaleX(10);
+      opacity: 0;
+    }
+  }
+  
+  .estrellaBrillante {
+    background: #fff;
+    width: 4px;
+    height: 4px;
+    box-shadow: 0 0 10px #fff;
+    animation: rastroBrillo 0.5s infinite;
+    transform-origin: left;
+  }
+  
+  @keyframes entradaGersin {
+    from {
+      left: -100px; /* Puedes ajustar esto según el tamaño de la nave */
+    }
+    to {
+      left: 50%; /* Centro de la pantalla */
+    }
+  }
+  
+  #espacio img {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    transition: left 0.1s ease, top 0.1s ease;
+    animation: entradaGersin 2s ease-out none;
+  }
+  
+  #espacio img.propulsor::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 10px; /* Cambiamos esto para controlar mejor la altura */
+    left: 0;
+    top: 50%; /* Centramos el propulsor en la nave */
+    transform: translateY(-50%); /* Esto lo centra verticalmente */
+    background: linear-gradient(to left, rgba(64, 169, 255, 0.7), rgba(64, 169, 255, 0));
+  
+  }
+  
+  #proyectil {
+    border-radius: 50%; /* Para hacerlo redondo, si quieres */
+    /* Otros estilos que te gusten */
+  }
+  
+  .enunciado{
+    position: absolute;
+  }
+  
+  h1,
+  h2 {
+    margin: auto;
+    font-size: 3em;
+    font-weight: 300;
+    position: relative;
+    z-index: 10;
+    animation: subtleColorChange 4s infinite alternate, entrarTexto 1s ease-out 2s forwards;
+    opacity:0;
+  }
+  
+  @keyframes subtleColorChange {
+    0% {
+      color: hsl(0, 0%, 100%);
+      text-shadow: 0 0 0.01rem hsla(32, 71%, 73%, 0.644);
+    }
+    90% {
+      color: hsl(58, 50%, 87%);
+      text-shadow: 0 0 0.9rem hsla(184, 71%, 73%, 0.644),
+        1rem 2rem 3rem hsla(54, 17%, 51%, 0.644);
+    }
+  }
+  
+  li a {
+    text-shadow: 0.3em 0.125em 0.25em hsla(172, 100%, 60%, 0.4);
+  }
+
+  @keyframes entrarTexto {
+    from {
+      transform: translateY(30px); /* Ajusta este valor según necesites */
+      opacity: 0; /* Para hacerlo sutilmente transparente al comienzo */
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  
+  /*Fin seccion inicio*/
