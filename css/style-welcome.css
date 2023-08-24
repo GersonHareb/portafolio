@@ -77,11 +77,11 @@
   @keyframes rastroBrillo {
     0% {
       transform: scaleY(15);
-      opacity: 1;
+      opacity: 0;
     }
     100% {
       transform: scaleY(1);
-      opacity: 0;
+      opacity: 1;
     }
   }
   
@@ -108,9 +108,10 @@
     left: 50%;
     top: 10%;
     transform: translate(-50%, -50%);
-    width: 100px;
+    width: 50px;
     transition: left 0.1s ease, top 0.1s ease;
     animation: entradaGersin 2s ease-out none;
+    z-index: 3;
   }
   
   #espacio img.propulsor::before {
@@ -127,11 +128,13 @@
   
   #proyectil {
     border-radius: 50%; /* Para hacerlo redondo, si quieres */
+    z-index: 2;
     /* Otros estilos que te gusten */
   }
   
   .enunciado{
     position: absolute;
+    top: 20%;
   }
   
   h1,
@@ -177,6 +180,82 @@
 
   /*Tamaños*/
   @media (min-width: 786px) {
+    @keyframes entradaGersin {
+      from {
+        left: -100px; /* Puedes ajustar esto según el tamaño de la nave */
+      }
+      to {
+        left: 50%; /* Centro de la pantalla */
+      }
+    }
+    
+    #espacio img {
+      width: 100px;
+      transition: left 0.1s ease, top 0.1s ease;
+      animation: entradaGersin 2s ease-out none;
+      z-index: 3;
+    }
+    
+    #espacio img.propulsor::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 10px; /* Cambiamos esto para controlar mejor la altura */
+      left: 0;
+      top: 50%; /* Centramos el propulsor en la nave */
+      transform: translateY(-50%); /* Esto lo centra verticalmente */
+      background: linear-gradient(to left, rgba(64, 169, 255, 0.7), rgba(64, 169, 255, 0));
+    }
+    
+    #proyectil {
+      border-radius: 50%; /* Para hacerlo redondo, si quieres */
+      
+      /* Otros estilos que te gusten */
+    }
+    
+    .enunciado{
+      position: absolute;
+      top: 40%;
+    }
+    
+    h1,
+    h2 {
+      margin: auto;
+      font-size: 3em;
+      font-weight: 300;
+      position: relative;
+      z-index: 10;
+      animation: subtleColorChange 4s infinite alternate, entrarTexto 1s ease-out 2s forwards;
+      opacity:0;
+    }
+    
+    @keyframes subtleColorChange {
+      0% {
+        color: hsl(0, 0%, 100%);
+        text-shadow: 0 0 0.01rem hsla(32, 71%, 73%, 0.644);
+      }
+      90% {
+        color: hsl(58, 50%, 87%);
+        text-shadow: 0 0 0.9rem hsla(184, 71%, 73%, 0.644),
+          1rem 2rem 3rem hsla(54, 17%, 51%, 0.644);
+      }
+    }
+    
+    li a {
+      text-shadow: 0.3em 0.125em 0.25em hsla(172, 100%, 60%, 0.4);
+    }
+  
+    @keyframes entrarTexto {
+      from {
+        transform: translateY(30px); /* Ajusta este valor según necesites */
+        opacity: 0; /* Para hacerlo sutilmente transparente al comienzo */
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     @keyframes rastroBrillo {
       0% {
         transform: scaleX(1);

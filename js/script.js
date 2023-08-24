@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(crearEstrella, 100);
   
   
-  /* Animacion Gersito*/
+  /* Animacion Gersin*/
   const nave = document.querySelector('#espacio img');
   let keys = {};
   
@@ -74,47 +74,53 @@ document.addEventListener('DOMContentLoaded', () => {
     keys[e.key] = false;
   });
   
-  function moveNave() {
-    const step = 1; // Puedes ajustar este valor según la velocidad que desees
-  
+  let posicionInicialEstablecida = false;
 
-    const stepHorizontal = 1.2; 
-    const stepVertical = 1.6; 
-    
-    // Obtiene el tamaño del viewport y de la nave
-    const viewportWidth = document.getElementById('espacio').offsetWidth;
-    const viewportHeight = document.getElementById('espacio').offsetHeight;
-    const naveWidth = nave.offsetWidth;
-    const naveHeight = nave.offsetHeight;
-    
+  function moveNave() {
+    const stepHorizontal = 1.2;
+    const stepVertical = 1.6;
     let left = parseFloat(nave.style.left || 50);
-    let top = parseFloat(nave.style.top || 30);
-    
+  
+    if (!posicionInicialEstablecida && !keys['ArrowUp'] && !keys['ArrowDown']) {
+      if (window.innerWidth <= 768) { // Si es un móvil
+        nave.style.top = `${100 - 20}%`; // Posicionamos 20% arriba del fondo
+      } else { // Si es un escritorio
+        nave.style.top = `30%`; // Posicionamos 30% desde la parte superior
+      }
+      posicionInicialEstablecida = true; // Marcamos que hemos establecido la posición inicial
+    }
+  
+    let top = parseFloat(nave.style.top || 50);
+  
     if (keys['ArrowLeft']) left -= stepHorizontal;
     if (keys['ArrowRight']) left += stepHorizontal;
-    if (keys['ArrowUp']) top -= stepVertical; 
+    if (keys['ArrowUp']) top -= stepVertical;
     if (keys['ArrowDown']) top += stepVertical;
-    
+  
     // Limitar la posición para que la nave no se salga del viewport
-    left = Math.max(0, Math.min(left, 100 - naveWidth / viewportWidth * 100));
-    top = Math.max(0, Math.min(top, 100 - naveHeight / viewportHeight * 100));
-    
+    left = Math.max(0, Math.min(left, 100));
+    top = Math.max(0, Math.min(top, 100));
+  
     nave.style.left = `${left}%`;
     nave.style.top = `${top}%`;
-
+  
     // Si Gersito está avanzando, añadir la clase de propulsor
     if (keys['ArrowRight']) {
-        nave.classList.add('propulsor');
+      nave.classList.add('propulsor');
     } else {
-        nave.classList.remove('propulsor');
+      nave.classList.remove('propulsor');
     }
-    
-    
   
     requestAnimationFrame(moveNave);
   }
   
-  requestAnimationFrame(moveNave);
+  moveNave();
+  
+  
+  
+  
+  
+
 
   /*Disparar*/
   var proyectil = document.createElement('div');
@@ -124,33 +130,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+
   function disparar() {
-    var nave = document.querySelector('#espacio img');
-    var rect = nave.getBoundingClientRect();
-    
-    var proyectil = document.createElement('div');
-    proyectil.style.position = 'absolute';
-    proyectil.style.left = rect.right + 'px';
-    proyectil.style.top = (rect.top + rect.bottom) / 2 + 'px';
-    proyectil.style.width = '20px';
+  var nave = document.querySelector('#espacio img');
+  var rect = nave.getBoundingClientRect();
+
+  var proyectil = document.createElement('div');
+  proyectil.style.position = 'absolute';
+
+  if (window.innerWidth <= 768) { // Si es un móvil
+    proyectil.style.left = (rect.left + rect.right) / 2 + 'px'; // Posicionamos en el centro horizontalmente
+    proyectil.style.top = rect.top + 'px'; // Posicionamos un poquito abajo del centro de Gersin
+    proyectil.style.width = '5px';
+    proyectil.style.height = '20px'; // Proyectil vertical
+  } else { // Si es un escritorio
+    proyectil.style.left = (rect.left + rect.right) / 2 - 10 + 'px'; // Posicionamos en el centro horizontalmente
+    proyectil.style.top = (rect.top + rect.bottom) / 2 + 'px'; // Posicionamos en el centro verticalmente
+    proyectil.style.width = '20px'; // Proyectil horizontal
     proyectil.style.height = '5px';
-    proyectil.style.background = 'yellow';
-    proyectil.style.boxShadow = '8px -4px 87px 12px rgba(28,137,161,1)';
-    document.getElementById('espacio').appendChild(proyectil);
-  
-    /*Animacion disparo*/
-    var velocidad = 30;
-    var moverProyectil = setInterval(function() {
+  }
+
+  proyectil.style.background = 'yellow';
+  proyectil.style.boxShadow = '8px -4px 87px 12px rgba(28,137,161,1)';
+  document.getElementById('espacio').appendChild(proyectil);
+
+  /* Animacion disparo */
+  var velocidad = 30;
+  var moverProyectil = setInterval(function() {
+    if (window.innerWidth <= 768) { // Si es un móvil
+      var top = parseFloat(proyectil.style.top);
+      proyectil.style.top = (top - velocidad) + 'px'; // Movemos hacia arriba
+
+      // Verifica si el proyectil está fuera de la pantalla
+      if (top < 0) {
+        clearInterval(moverProyectil);
+        document.getElementById('espacio').removeChild(proyectil);
+      }
+    } else { // Si es un escritorio
       var left = parseFloat(proyectil.style.left);
-      proyectil.style.left = (left + velocidad) + 'px';
-      
+      proyectil.style.left = (left + velocidad) + 'px'; // Movemos horizontalmente
+
       // Verifica si el proyectil está fuera de la pantalla
       if (left > window.innerWidth) {
         clearInterval(moverProyectil);
         document.getElementById('espacio').removeChild(proyectil);
       }
-    }, 16);
-  }
+    }
+  }, 16);
+}
+
+  
   
   
 
