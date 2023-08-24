@@ -1,5 +1,4 @@
 /*Animacion video */
-
 document.addEventListener('DOMContentLoaded', () => {
     const cartasProyecto = document.querySelectorAll('.carta-proyecto');
   
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-
+/*Creacion estrellas */
   function crearEstrella() {
     const estrella = document.createElement('div');
     estrella.classList.add('estrella');
@@ -58,10 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, 20);
   }
+
+  if(window.innerWidth <= 768){
+    setInterval(crearEstrella, 30);
+  } else {
   setInterval(crearEstrella, 100);
+  }
   
-  
-  /* Animacion Gersin*/
+  /* Animacion Nave Gersin*/
   const nave = document.querySelector('#espacio img');
   let keys = {};
   
@@ -118,10 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
   
   
-  
-  
-
-
   /*Disparar*/
   var proyectil = document.createElement('div');
   window.addEventListener('keydown', function(e) {
