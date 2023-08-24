@@ -18,34 +18,48 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  /*Animacion espacio */
-  const espacio = document.getElementById('espacio');
-
   function crearEstrella() {
     const estrella = document.createElement('div');
     estrella.classList.add('estrella');
-    
-    estrella.style.left = Math.random() * 100 + 'vw';
-    estrella.style.top = Math.random() * 100 + 'vh';
-
-  if (Math.random() < 0.5) {
-    estrella.classList.add('estrellaBrillante');
-  }
+  
+    if (window.innerWidth <= 768) { // Si es un móvil
+      estrella.style.left = Math.random() * 100 + 'vw';
+      estrella.style.top = '-5vh'; // Comienza fuera de la pantalla arriba
+    } else { // Si es un escritorio
+      estrella.style.left = '105vw'; // Comienza fuera de la pantalla a la derecha
+      estrella.style.top = Math.random() * 100 + 'vh';
+    }
+  
+    if (Math.random() < 0.5) {
+      estrella.classList.add('estrellaBrillante');
+    }
   
     espacio.appendChild(estrella);
   
-    let posicion = 100;
-    const animacion = setInterval(() => {
-      posicion -= 1;
-      estrella.style.left = posicion + 'vw';
+    let posicion;
+    if (window.innerWidth <= 768) { // Si es un móvil
+      posicion = -5; // Comienza en -5vh
+    } else { // Si es un escritorio
+      posicion = 105; // Comienza en 105vw
+    }
   
-      if (posicion < -5) {
+    const animacion = setInterval(() => {
+      if (window.innerWidth <= 768) { // Si es un móvil
+        posicion += 2; // Incrementamos la posición
+        estrella.style.top = posicion + 'vh'; // Mueve hacia abajo
+      } else { // Si es un escritorio
+        posicion -= 1;
+        estrella.style.left = posicion + 'vw'; // Mueve hacia la izquierda
+      }
+  
+      if ((window.innerWidth <= 768 && posicion > 100) || (window.innerWidth > 768 && posicion < -5)) { // Cuando la estrella sale de la pantalla
         estrella.remove();
         clearInterval(animacion);
       }
     }, 20);
   }
   setInterval(crearEstrella, 100);
+  
   
   /* Animacion Gersito*/
   const nave = document.querySelector('#espacio img');
@@ -133,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Verifica si el proyectil está fuera de la pantalla
       if (left > window.innerWidth) {
         clearInterval(moverProyectil);
-        document.body.removeChild(proyectil);
+        document.getElementById('espacio').removeChild(proyectil);
       }
     }, 16);
   }

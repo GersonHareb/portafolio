@@ -34,65 +34,10 @@
     text-decoration: none;
     color: #fcfcfc;
   }
-  /*
-    li:hover {
-    }*/
-  
-  .proyecto-nav {
-    background-color: var(--light1-color);
-    transition: background-color 0.3s ease-in-out;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-  }
-  
-  .active-proyecto{
-    background:var(--main-color);
-    color: var(--primary-color);
-    padding: 22px;
-    font-weight: 600;
-    margin: 0 -20px 0 -20px;
-    box-shadow: 0px 10px 15px -5px var(--main-color);
-  }
-  
-  .active-sobre-mi{
-    background:var(--light1-color);
-    color: var(--main-color);
-    padding: 22px;
-    font-weight: 600;
-    margin: 0 -20px 0 -20px;
-    box-shadow: 0px 10px 15px -5px var(--light1-color);
-  }
-  
-  .active-contacto{
-    background:var(--secondary-color);
-    color: var(--primary-color);
-    padding: 22px;
-    font-weight: 600;
-    margin: 0 -20px 0 -20px;
-    box-shadow: 0px 10px 15px -5px var(--secondary-color);
-  }
-  
-  .sobre-mi-nav {
-    background-color: var(--light2-color);
-    transition: background-color 0.3s ease-in-out;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-  }
-  
-  .contacto-nav {
-    background-color: var(--primary-color);
-    transition: background-color 0.3s ease-in-out;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Estilo de la barra de navegación fija */
-  .custom-navbar.scrolled {
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
-  
+
   section {
     min-height: 100vh;
-  overflow: hidden;
+     overflow: hidden;
   }
   
   .section-container{
@@ -131,11 +76,11 @@
   
   @keyframes rastroBrillo {
     0% {
-      transform: scaleX(1);
+      transform: scaleY(15);
       opacity: 1;
     }
     100% {
-      transform: scaleX(10);
+      transform: scaleY(1);
       opacity: 0;
     }
   }
@@ -146,7 +91,7 @@
     height: 4px;
     box-shadow: 0 0 10px #fff;
     animation: rastroBrillo 0.5s infinite;
-    transform-origin: left;
+    transform-origin: top;
   }
   
   @keyframes entradaGersin {
@@ -229,3 +174,27 @@
   
   
   /*Fin seccion inicio*/
+
+  /*Tamaños*/
+  @media (min-width: 786px) {
+    @keyframes rastroBrillo {
+      0% {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scaleX(10);
+        opacity: 0;
+      }
+    }
+    
+    .estrellaBrillante {
+      background: #fff;
+      width: 4px;
+      height: 4px;
+      box-shadow: 0 0 10px #fff;
+      animation: rastroBrillo 0.5s infinite;
+      transform-origin: left;
+    }
+    
+  }
