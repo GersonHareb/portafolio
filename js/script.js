@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     if (!posicionInicialEstablecida && !keys['ArrowUp'] && !keys['ArrowDown']) {
       if (window.innerWidth <= 768) { // Si es un móvil
-        nave.style.top = `${100 - 20}%`; // Posicionamos 20% arriba del fondo
+        nave.style.top = `${100 - 28}%`; // Posicionamos 20% arriba del fondo
       } else { // Si es un escritorio
         nave.style.top = `30%`; // Posicionamos 30% desde la parte superior
       }
