@@ -64,10 +64,10 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(to left bottom, #060b3d, #1d0d43, #2f0d48, #400c4b, #51094d, #501c5e, #4c2b6e, #45397d, #00518f, #006592, #007488, #058179);  overflow: hidden; /* Para ocultar las estrellas que salen del viewport */
+    background-image: linear-gradient(to bottom, #060b3d, #1d0d43, #2f0d48, #400c4b, #51094d, #501c5e, #4c2b6e, #45397d, #00518f, #006592, #007488, #058179);  overflow: hidden; /* Para ocultar las estrellas que salen del viewport */
   }
   
-  .estrella {
+  .estrella { 
     position: absolute;
     width: 2px;
     height: 2px;
@@ -95,18 +95,21 @@
   }
   
   @keyframes entradaGersin {
-    from {
-      left: -100px; /* Puedes ajustar esto según el tamaño de la nave */
+    0% {
+      top: 110%;
     }
-    to {
-      left: 50%; /* Centro de la pantalla */
+    50% {
+      top: 10%;
+    }
+    100% {
+      top: 72%;
     }
   }
   
   #espacio img {
     position: absolute;
     left: 50%;
-    top: 10%;
+    top: 20%;
     transform: translate(-50%, -50%);
     width: 50px;
     transition: left 0.1s ease, top 0.1s ease;
@@ -118,18 +121,17 @@
     content: '';
     position: absolute;
     width: 300px;
-    height: 10px; /* Cambiamos esto para controlar mejor la altura */
+    height: 10px;
     left: 0;
-    top: 50%; /* Centramos el propulsor en la nave */
-    transform: translateY(-50%); /* Esto lo centra verticalmente */
+    top: 50%;
+    transform: translateY(-50%);
     background: linear-gradient(to left, rgba(64, 169, 255, 0.7), rgba(64, 169, 255, 0));
   
   }
   
   #proyectil {
-    border-radius: 50%; /* Para hacerlo redondo, si quieres */
+    border-radius: 50%;
     z-index: 2;
-    /* Otros estilos que te gusten */
   }
   
   .enunciado{
@@ -166,51 +168,57 @@
 
   @keyframes entrarTexto {
     from {
-      transform: translateY(30px); /* Ajusta este valor según necesites */
-      opacity: 0; /* Para hacerlo sutilmente transparente al comienzo */
+      transform: translateY(30px);
+      opacity: 0;
     }
     to {
       transform: translateY(0);
       opacity: 1;
     }
   }
-  
-  
   /*Fin seccion inicio*/
+
+
+
+
+
+
 
   /*Tamaños*/
   @media (min-width: 786px) {
+
+    #espacio {
+      background-image: linear-gradient(to left bottom, #060b3d, #1d0d43, #2f0d48, #400c4b, #51094d, #501c5e, #4c2b6e, #45397d, #00518f, #006592, #007488, #058179);  overflow: hidden; /* Para ocultar las estrellas que salen del viewport */
+    }
+
     @keyframes entradaGersin {
       from {
-        left: -100px; /* Puedes ajustar esto según el tamaño de la nave */
+        left: -100px; 
       }
       to {
-        left: 50%; /* Centro de la pantalla */
+        left: 50%;
       }
     }
     
     #espacio img {
+      content: url("../img/gersin.png");
       width: 100px;
       transition: left 0.1s ease, top 0.1s ease;
       animation: entradaGersin 2s ease-out none;
       z-index: 3;
+      top: 30%;
     }
     
+
     #espacio img.propulsor::before {
       content: '';
       position: absolute;
       width: 300px;
-      height: 10px; /* Cambiamos esto para controlar mejor la altura */
+      height: 10px;
       left: 0;
-      top: 50%; /* Centramos el propulsor en la nave */
-      transform: translateY(-50%); /* Esto lo centra verticalmente */
+      top: 50%;
+      transform: translateY(-50%);
       background: linear-gradient(to left, rgba(64, 169, 255, 0.7), rgba(64, 169, 255, 0));
-    }
-    
-    #proyectil {
-      border-radius: 50%; /* Para hacerlo redondo, si quieres */
-      
-      /* Otros estilos que te gusten */
     }
     
     .enunciado{
@@ -227,33 +235,6 @@
       z-index: 10;
       animation: subtleColorChange 4s infinite alternate, entrarTexto 1s ease-out 2s forwards;
       opacity:0;
-    }
-    
-    @keyframes subtleColorChange {
-      0% {
-        color: hsl(0, 0%, 100%);
-        text-shadow: 0 0 0.01rem hsla(32, 71%, 73%, 0.644);
-      }
-      90% {
-        color: hsl(58, 50%, 87%);
-        text-shadow: 0 0 0.9rem hsla(184, 71%, 73%, 0.644),
-          1rem 2rem 3rem hsla(54, 17%, 51%, 0.644);
-      }
-    }
-    
-    li a {
-      text-shadow: 0.3em 0.125em 0.25em hsla(172, 100%, 60%, 0.4);
-    }
-  
-    @keyframes entrarTexto {
-      from {
-        transform: translateY(30px); /* Ajusta este valor según necesites */
-        opacity: 0; /* Para hacerlo sutilmente transparente al comienzo */
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
     }
 
     @keyframes rastroBrillo {
