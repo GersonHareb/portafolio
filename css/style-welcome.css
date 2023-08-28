@@ -152,7 +152,7 @@
     animation: subtleColorChange 4s infinite alternate, entrarTexto 1s ease-out 2s forwards;
     opacity:0;
   }
-  
+  /*
   @keyframes subtleColorChange {
     0% {
       color: hsl(0, 0%, 100%);
@@ -164,6 +164,7 @@
         1rem 2rem 3rem hsla(54, 17%, 51%, 0.644);
     }
   }
+  */
   
   li a {
     text-shadow: 0.3em 0.125em 0.25em hsla(172, 100%, 60%, 0.4);
