@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
 function crearEstrella() {
   const estrella = document.createElement('div');
   estrella.classList.add('estrella');
+  let estrellasActivas = 0; 
+  estrellasActivas++;
 
   if (window.innerWidth <= 768) { // Si es un móvil
     estrella.style.left = Math.random() * 100 + 'vw';
@@ -54,15 +56,13 @@ function crearEstrella() {
     if ((window.innerWidth <= 768 && posicion > 100) || (window.innerWidth > 768 && posicion < 1)) { // Cuando la estrella sale de la pantalla
       estrella.remove();
       clearInterval(animacion);
+      estrellasActivas--; 
     }
   }, 20);
 }
 
-if(window.innerWidth <= 768){
-  setInterval(crearEstrella, 400);
-} else {
 setInterval(crearEstrella, 100);
-}
+
 
 /* Animacion Nave Gersin*/
 const nave = document.querySelector('#espacio img');
