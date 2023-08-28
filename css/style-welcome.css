@@ -23,12 +23,14 @@
   }
   ul {
     list-style: none;
-  
     margin: 0;
+    padding-inline-start: 0;
   }
+  
   li {
     display: inline-block;
-    padding: 20px;
+    padding: 10px;
+    padding-left:0 ;
   }
   a {
     text-decoration: none;
@@ -43,9 +45,9 @@
   .section-container{
     max-width: 1200px;
     margin: auto;
-    display: grid; /* Usar una disposición de cuadrícula */
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas de tamaño flexible */
-    gap: 20px; /* Espacio entre las tarjetas */
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 20px;
   }
   
   /*Seccion Inicio*/
@@ -59,6 +61,7 @@
     text-align: center;
     overflow: hidden;
   }
+
   
   #espacio {
     position: relative;
@@ -142,7 +145,7 @@
   h1,
   h2 {
     margin: auto;
-    font-size: 3em;
+    font-size: 1.8em;
     font-weight: 300;
     position: relative;
     z-index: 10;
@@ -187,6 +190,22 @@
   /*Tamaños*/
   @media (min-width: 786px) {
 
+ 
+    .navbar-menu {
+      padding-left: 0;
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+  
+    nav li {
+      padding: 0;
+    }
+  
+    nav li a {
+      font-size: 20px;
+      padding: 20px;
+    }
+
     #espacio {
       background-image: linear-gradient(to left bottom, #060b3d, #1d0d43, #2f0d48, #400c4b, #51094d, #501c5e, #4c2b6e, #45397d, #00518f, #006592, #007488, #058179);  overflow: hidden; /* Para ocultar las estrellas que salen del viewport */
     }
@@ -225,17 +244,13 @@
       position: absolute;
       top: 40%;
     }
+
     
-    h1,
-    h2 {
-      margin: auto;
-      font-size: 3em;
-      font-weight: 300;
-      position: relative;
-      z-index: 10;
-      animation: subtleColorChange 4s infinite alternate, entrarTexto 1s ease-out 2s forwards;
-      opacity:0;
-    }
+  h1,
+  h2 {
+    font-size: 3.5em;
+    font-weight: 300;
+  }
 
     @keyframes rastroBrillo {
       0% {

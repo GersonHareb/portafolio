@@ -37,7 +37,7 @@ function crearEstrella() {
 
   let posicion;
   if (window.innerWidth <= 768) { // Si es un móvil
-    posicion = -5; // Comienza en -5vh
+    posicion = 5; // Comienza en -5vh
   } else { // Si es un escritorio
     posicion = 105; // Comienza en 105vw
   }
@@ -51,7 +51,7 @@ function crearEstrella() {
       estrella.style.left = posicion + 'vw'; // Mueve hacia la izquierda
     }
 
-    if ((window.innerWidth <= 768 && posicion > 100) || (window.innerWidth > 768 && posicion < -5)) { // Cuando la estrella sale de la pantalla
+    if ((window.innerWidth <= 768 && posicion > 100) || (window.innerWidth > 768 && posicion < 1)) { // Cuando la estrella sale de la pantalla
       estrella.remove();
       clearInterval(animacion);
     }
@@ -59,7 +59,7 @@ function crearEstrella() {
 }
 
 if(window.innerWidth <= 768){
-  setInterval(crearEstrella, 30);
+  setInterval(crearEstrella, 400);
 } else {
 setInterval(crearEstrella, 100);
 }
