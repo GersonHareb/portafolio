@@ -8,141 +8,31 @@ section#proyectos {
   display: flex;
 }
 
-.carta-proyecto {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  max-width: 100%;
-  height: 500px;
-  border-radius: 12px;
-  overflow: hidden;
-  margin: 30px;
-  box-shadow: 0 9px 10px -3px rgba(27, 27, 27, 0.5);
-  z-index: 0;
-}
-
-.carta-proyecto video {
-  max-height: 300px;
-  width: 100%;
-  object-fit: cover;
-  transition: transform 0.2s ease-in-out;
-  z-index: 1;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  border: solid red;
-  z-index: 2; /* Colocar el overlay encima de la imagen */
-}
-
-@keyframes shine {
-  0%, 100% {
-    box-shadow: 1px 1px 15px -4px rgba(255, 255, 255, 0.5);
-  }
-  50% {
-    box-shadow: 1px 1px 25px -4px rgba(255, 255, 255, 0.8);
-  }
-}
-
-.carta-proyecto:hover {
-  animation: shine 1.5s infinite;
-}
-
-.carta-proyecto h5{
-  text-align: center;
-  margin-bottom:20px ;
-}
-
-.carta-proyecto p {
-  font-size: 12px;
-}
-
-.carta-proyecto button {
-  background-color: var(--light2-color);
-  position: absolute;
-  bottom: 7%;
-  right: 10%;
-}
-
-@keyframes changeColors {
-  0% {
-    background-color: var(--primary-color);
-    color: initial;
-  }
-  100% {
-    background-color: var(--main-color);
-    color: var(--primary-color);
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.295);
-  }
-}
-
-.texto-tarjeta {
-  flex-grow: 1;
-  width: 100%;
-  padding: 20px;
-  overflow: hidden;
-  z-index: 1;
-  background-color: var(--light1-color);
-  transition: background-color 0.5s ease-in-out;
-
-  position: relative;
+.card {
+  width: auto;
+  height: 200px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin: 15px;
   
 }
 
-.carta-proyecto:hover .overlay {
-  display: none;
+.card a{
+  color: black;
 }
 
-.carta-proyecto:hover .texto-tarjeta {
-  animation: changeColors 0.2s ease-in-out forwards;
-  z-index: 3;
+.topics {
+  margin-top: 10px;
 }
 
-.carta-proyecto:hover .texto-tarjeta button {
-  background-color: var(--primary-color);
-  color: var(--main-color);
+.topic-label {
+  background-color: #ccc;
+  padding: 5px;
+  margin-right: 5px;
+  border-radius: 3px;
 }
 
-.carta-proyecto:hover .tags {
-  opacity:1;
-}
 
-.tags{
-  opacity:0;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin:0 0 15px 7px ;
-  z-index: 5;
-}
-
-.tags span{
-  padding: 4px 8px 6px 8px;
-  margin-left: 8px;
-  color: white;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 12px;
-  box-shadow: 1px 1px 15px -4px rgba(27, 27, 27, 0.8);
-}
-
-.springboot{
-  background-color: #07a14c;
-}
-
-.java{
-  background-color: #e05819;
-}
-
-.mysql{
-  background-color: #e4e70e;
-  color: #222522!important;
-}
 
 
 
@@ -162,47 +52,26 @@ section#contacto {
 
 /* Consulta de medios para pantallas de tamaño de tableta y celular */
 @media (min-width: 768px) {
-  section#welcome h2 {
-    margin-bottom: 10px;
-  }
-
   section#proyectos {
     padding-bottom: 100px;
   }
 
-  .active-proyecto{
-    padding: 17px 6px 17px 6px;
-    margin: 0 5px 0 5px;
-  }
-  
-  .active-sobre-mi{
-    padding: 17px 6px 17px 6px;
-    margin: 0 5px 0 5px;
-  }
-  
-  .active-contacto{
-    padding: 17px 6px 17px 6px;
-    margin: 0 5px 0 5px;
-  }
-
-  .section-container{
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .carta-proyecto {
+  #github-projects{
+    display:flex;
     flex-direction: row;
-    height: auto;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
+  
+  .card {
+    width: 300px;
+    height: 200px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 15px;
+  }
+  
 
-  .carta-proyecto video{
-    height: 100%;
-  }
-
-  .carta-proyecto video{
-    width: 60%;
-  }
-
-  .carta-proyecto .texto-tarjeta{
-    width: 40%;
-  }
+  
 }

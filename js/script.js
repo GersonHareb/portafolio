@@ -45,7 +45,7 @@ function crearEstrella() {
   }
 
   const animacion = setInterval(() => {
-    if (window.innerWidth <= 768) { // Si es un móvil
+    if (window.innerWidth <= 768) {
       posicion += 2; // Incrementamos la posición
       estrella.style.top = posicion + 'vh'; // Mueve hacia abajo
     } else { // Si es un escritorio
@@ -70,7 +70,7 @@ let keys = {};
 
 window.addEventListener('keydown', function (e) {
   keys[e.key] = true;
-  e.preventDefault(); // Detiene el comportamiento predeterminado
+  e.preventDefault();
 });
 
 window.addEventListener('keyup', function (e) {
@@ -177,3 +177,74 @@ var moverProyectil = setInterval(function() {
   }
 }, 16);
 }
+
+
+/*utilizar mis repositorios Github*/
+const projectContainer = document.getElementById('github-projects');
+const topicFilter = document.getElementById('topic-filter');
+
+// Función para crear y mostrar las cartas
+function displayRepos(repos) {
+  // Primero limpia el contenedor
+  projectContainer.innerHTML = '';
+
+  repos.forEach(repo => {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const title = document.createElement('h3');
+    title.innerText = repo.name;
+
+    const description = document.createElement('p');
+    description.innerText = repo.description || 'Sin descripción';
+
+    const link = document.createElement('a');
+    link.href = repo.html_url;
+    link.innerText = 'Ver en GitHub';
+
+    const topicsContainer = document.createElement('div');
+    topicsContainer.className = 'topics';
+    if (repo.topics && repo.topics.length > 0) {
+      repo.topics.forEach(topic => {
+        const topicLabel = document.createElement('span');
+        topicLabel.className = 'topic-label';
+        topicLabel.innerText = topic;
+        topicsContainer.appendChild(topicLabel);
+      });
+    }
+
+    card.appendChild(title);
+    card.appendChild(description);
+    card.appendChild(topicsContainer);
+    card.appendChild(link);
+
+    projectContainer.appendChild(card);
+  });
+}
+
+// Fetch inicial
+fetch('https://api.github.com/users/GersonHareb/repos', {
+  headers: {
+    Accept: 'application/vnd.github.mercy-preview+json'
+  }
+})
+.then(response => response.json())
+.then(data => {
+  // Muestra todos los repositorios al inicio
+  displayRepos(data);
+
+  // Añade el evento al combo para filtrar los repos
+  topicFilter.addEventListener('change', function() {
+    const selectedTopic = this.value;
+    let filteredRepos;
+
+    if (selectedTopic === 'all') {
+      filteredRepos = data;
+    } else {
+      filteredRepos = data.filter(repo => repo.topics && repo.topics.includes(selectedTopic));
+    }
+
+    displayRepos(filteredRepos);
+  });
+});
+

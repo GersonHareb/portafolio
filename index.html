@@ -40,55 +40,13 @@
       </section>
       <section id="proyectos">
         <div class="section-container">
-          <div class="carta-proyecto">
-            <div class="overlay"></div>
-            <div class="tags"><span class="java">Java</span><span class="springboot">Springboot</span><span class="mysql">MySQL</span></div>
-            <video class="videotarjeta1" muted loop>
-              <source src="./img/video1.mp4" type="video/mp4">
-              Tu navegador no soporta videos HTML5.
-            </video>
-            <div class="texto-tarjeta">
-              <h5>Prevencion de Riesgos</h3>
-              <p>CRUD que contempla creacion de usuarios, pagos, checklist, comentarios. Todo esto gestionado a traves de Springboot, Spring Security con roles y persistencia via MySQL</p>
-              <a href="https://github.com/GersonHareb/PrevencionRiesgosSpringboot"><button class="btn btn-primary">Ir al proyecto</button></a>
-            </div>
-          </div>
-          <div class="carta-proyecto">
-            <div class="overlay"></div>
-            <video class="videotarjeta1" muted loop>
-              <source src="./img/video1.mp4" type="video/mp4">
-              Tu navegador no soporta videos HTML5.
-            </video>
-            <div class="texto-tarjeta">
-              <h5>Calculadora</h3>
-              <p>Aplicacion simple para Front, estilizada como una calculadora clasica</p>
-              <button class="btn btn-primary">Ir al proyecto</button>
-            </div>
-          </div>
-          <div class="carta-proyecto">
-            <div class="overlay"></div>
-            <video class="videotarjeta1" muted loop>
-              <source src="./img/video1.mp4" type="video/mp4">
-              Tu navegador no soporta videos HTML5.
-            </video>
-            <div class="texto-tarjeta">
-              <h5>Prevencion de Riesgos</h3>
-              <p>CRUD que contempla creacion de usuarios, pagos, checklist, comentarios. Todo esto gestionado a traves de Springboot, Spring Security con roles y persistencia via MySQL</p>
-              <button class="btn btn-primary">Ir al proyecto</button>
-            </div>
-          </div>  
-          <div class="carta-proyecto">
-            <div class="overlay"></div>
-            <video class="videotarjeta1" muted loop>
-              <source src="./img/video1.mp4" type="video/mp4">
-              Tu navegador no soporta videos HTML5.
-            </video>
-            <div class="texto-tarjeta">
-              <h5>Prevencion de Riesgos</h3>
-              <p>CRUD que contempla creacion de usuarios, pagos, checklist, comentarios. Todo esto gestionado a traves de Springboot, Spring Security con roles y persistencia via MySQL</p>
-              <button class="btn btn-primary">Ir al proyecto</button>
-            </div>
-          </div>            
+          <select id="topic-filter">
+            <option value="all">Todos</option>
+            <option value="awakelab">AwakeLab</option>
+            <option value="digitalhouse">DigitalHouse</option>
+            <!-- Agrega más topics aquí -->
+          </select>
+          <div id="github-projects"></div>
         </div>
       </section>
       <section id="sobre-mi">

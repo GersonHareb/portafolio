@@ -18,6 +18,7 @@
     position: fixed;
     bottom:0;
     width: 100%;
+    height: 8vh;
     z-index: 1000;
     transition: top 0.3s ease-in-out;
   }
@@ -149,22 +150,18 @@
     font-weight: 300;
     position: relative;
     z-index: 10;
-    animation: subtleColorChange 4s infinite alternate, entrarTexto 1s ease-out 2s forwards;
+    animation: subtleColorChange 2s infinite alternate, entrarTexto 1s ease-out 2s forwards;
     opacity:0;
   }
-  /*
+
   @keyframes subtleColorChange {
     0% {
-      color: hsl(0, 0%, 100%);
-      text-shadow: 0 0 0.01rem hsla(32, 71%, 73%, 0.644);
+      text-shadow: 0 0 5px transparent;
     }
-    90% {
-      color: hsl(58, 50%, 87%);
-      text-shadow: 0 0 0.9rem hsla(184, 71%, 73%, 0.644),
-        1rem 2rem 3rem hsla(54, 17%, 51%, 0.644);
+    100% {
+      text-shadow: 0 0 15px hsla(54, 67%, 68%, 0.904);
     }
   }
-  */
   
   li a {
     text-shadow: 0.3em 0.125em 0.25em hsla(172, 100%, 60%, 0.4);
