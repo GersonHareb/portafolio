@@ -8,9 +8,18 @@ section#proyectos {
   display: flex;
 }
 
+.section-container{
+  padding: 50px 0;
+}
+
+select#topic-filter{
+  width: 400px;
+  margin: auto;
+}
+
 .card {
   width: auto;
-  height: 200px;
+  height: 300px!important;
   border: 1px solid #ccc;
   padding: 15px;
   margin: 15px;
@@ -30,6 +39,7 @@ section#proyectos {
   padding: 5px;
   margin-right: 5px;
   border-radius: 3px;
+  font-size: 13px;
 }
 
 

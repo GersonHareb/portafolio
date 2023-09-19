@@ -1,26 +1,8 @@
-/*Animacion video */
-document.addEventListener('DOMContentLoaded', () => {
-  const cartasProyecto = document.querySelectorAll('.carta-proyecto');
-
-  cartasProyecto.forEach(cartaProyecto => {
-    const video = cartaProyecto.querySelector('video');
-
-    cartaProyecto.addEventListener('mouseenter', () => {
-      video.play();
-    });
-
-    cartaProyecto.addEventListener('mouseleave', () => {
-      video.pause();
-      video.currentTime = 0;
-    });
-  });
-});
-
 /*Creacion estrellas */
 function crearEstrella() {
   const estrella = document.createElement('div');
   estrella.classList.add('estrella');
-  let estrellasActivas = 0; 
+  let estrellasActivas = 0;
   estrellasActivas++;
 
   if (window.innerWidth <= 768) { // Si es un móvil
@@ -38,25 +20,25 @@ function crearEstrella() {
   espacio.appendChild(estrella);
 
   let posicion;
-  if (window.innerWidth <= 768) { // Si es un móvil
-    posicion = 5; // Comienza en -5vh
-  } else { // Si es un escritorio
-    posicion = 105; // Comienza en 105vw
+  if (window.innerWidth <= 768) {
+    posicion = 5;
+  } else {
+    posicion = 105;
   }
 
   const animacion = setInterval(() => {
     if (window.innerWidth <= 768) {
-      posicion += 2; // Incrementamos la posición
-      estrella.style.top = posicion + 'vh'; // Mueve hacia abajo
-    } else { // Si es un escritorio
+      posicion += 2;
+      estrella.style.top = posicion + 'vh';
+    } else {
       posicion -= 1;
-      estrella.style.left = posicion + 'vw'; // Mueve hacia la izquierda
+      estrella.style.left = posicion + 'vw';
     }
 
     if ((window.innerWidth <= 768 && posicion > 100) || (window.innerWidth > 768 && posicion < 1)) { // Cuando la estrella sale de la pantalla
       estrella.remove();
       clearInterval(animacion);
-      estrellasActivas--; 
+      estrellasActivas--;
     }
   }, 20);
 }
@@ -85,12 +67,12 @@ function moveNave() {
   let left = parseFloat(nave.style.left || 50);
 
   if (!posicionInicialEstablecida && !keys['ArrowUp'] && !keys['ArrowDown']) {
-    if (window.innerWidth <= 768) { // Si es un móvil
-      nave.style.top = `${100 - 28}%`; // Posicionamos 20% arriba del fondo
-    } else { // Si es un escritorio
-      nave.style.top = `30%`; // Posicionamos 30% desde la parte superior
+    if (window.innerWidth <= 768) {
+      nave.style.top = `${100 - 28}%`;
+    } else {
+      nave.style.top = `30%`;
     }
-    posicionInicialEstablecida = true; // Marcamos que hemos establecido la posición inicial
+    posicionInicialEstablecida = true;
   }
 
   let top = parseFloat(nave.style.top || 50);
@@ -100,14 +82,14 @@ function moveNave() {
   if (keys['ArrowUp']) top -= stepVertical;
   if (keys['ArrowDown']) top += stepVertical;
 
-  // Limitar la posición para que la nave no se salga del viewport
+  /*Limitar la posición para que la nave no se salga del viewport*/
   left = Math.max(0, Math.min(left, 100));
   top = Math.max(0, Math.min(top, 100));
 
   nave.style.left = `${left}%`;
   nave.style.top = `${top}%`;
 
-  // Si Gersito está avanzando, añadir la clase de propulsor
+  /*Si Gersito está avanzando, añadir la clase de propulsor*/
   if (keys['ArrowRight']) {
     nave.classList.add('propulsor');
   } else {
@@ -137,15 +119,15 @@ var rect = nave.getBoundingClientRect();
 var proyectil = document.createElement('div');
 proyectil.style.position = 'absolute';
 
-if (window.innerWidth <= 768) { // Si es un móvil
-  proyectil.style.left = (rect.left + rect.right) / 2 + 'px'; // Posicionamos en el centro horizontalmente
-  proyectil.style.top = rect.top + 'px'; // Posicionamos un poquito abajo del centro de Gersin
+if (window.innerWidth <= 768) {
+  proyectil.style.left = (rect.left + rect.right) / 2 + 'px'; 
+  proyectil.style.top = rect.top + 'px';
   proyectil.style.width = '5px';
-  proyectil.style.height = '20px'; // Proyectil vertical
-} else { // Si es un escritorio
-  proyectil.style.left = (rect.left + rect.right) / 2 - 10 + 'px'; // Posicionamos en el centro horizontalmente
-  proyectil.style.top = (rect.top + rect.bottom) / 2 + 'px'; // Posicionamos en el centro verticalmente
-  proyectil.style.width = '20px'; // Proyectil horizontal
+  proyectil.style.height = '20px';
+} else {
+  proyectil.style.left = (rect.left + rect.right) / 2 - 10 + 'px';
+  proyectil.style.top = (rect.top + rect.bottom) / 2 + 'px';
+  proyectil.style.width = '20px';
   proyectil.style.height = '5px';
 }
 
@@ -156,20 +138,18 @@ document.getElementById('espacio').appendChild(proyectil);
 /* Animacion disparo */
 var velocidad = 30;
 var moverProyectil = setInterval(function() {
-  if (window.innerWidth <= 768) { // Si es un móvil
+  if (window.innerWidth <= 768) {
     var top = parseFloat(proyectil.style.top);
-    proyectil.style.top = (top - velocidad) + 'px'; // Movemos hacia arriba
+    proyectil.style.top = (top - velocidad) + 'px';
 
-    // Verifica si el proyectil está fuera de la pantalla
     if (top < 0) {
       clearInterval(moverProyectil);
       document.getElementById('espacio').removeChild(proyectil);
     }
-  } else { // Si es un escritorio
+  } else {
     var left = parseFloat(proyectil.style.left);
-    proyectil.style.left = (left + velocidad) + 'px'; // Movemos horizontalmente
+    proyectil.style.left = (left + velocidad) + 'px';
 
-    // Verifica si el proyectil está fuera de la pantalla
     if (left > window.innerWidth) {
       clearInterval(moverProyectil);
       document.getElementById('espacio').removeChild(proyectil);
@@ -185,7 +165,6 @@ const topicFilter = document.getElementById('topic-filter');
 
 // Función para crear y mostrar las cartas
 function displayRepos(repos) {
-  // Primero limpia el contenedor
   projectContainer.innerHTML = '';
 
   repos.forEach(repo => {
